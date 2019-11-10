@@ -25,8 +25,25 @@ defmodule Solar do
   # end
 
   # Using a List comprehension and Enum.sum
-  def total_flare_power(list) do
-    (for flare <- list, do: power(flare)) |> Enum.sum
+  def total_flare_power(flares) do
+    for(flare <- flares, do: power(flare)) |> Enum.sum()
   end
 
+  # List comprehension with Filter
+  # def flare_list(flares) do
+  #   for flare <- flares, flare.classification == :X do
+  #     power = power(flare)
+  #     %{power: power, is_deadly: power > 1000}
+  #   end
+  # end
+
+  # Same as above
+  def flare_list(flares) do
+    # Comprehension generators must return enumerables
+    for flare <- flares,
+        power <- [power(flare)],
+        is_deadly <- [power > 1000],
+        flare.classification == :X,
+        do: %{power: power, is_deadly: is_deadly}
+  end
 end

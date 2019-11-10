@@ -22,36 +22,13 @@ defmodule RocketryTest do
     assert result > 4 && result < 5
   end
 
-  # test "Orbital acceleration for Jupiter" do
-  #   x = orbital_acceleration(Planet.select[:jupiter], 100)
-  #   assert x == 24.659005330334
-  # end
-  #
-  # test "Orbital term at 100km for Saturn at 6000km" do
-  #   x = orbital_term(Planet.select[:saturn], 6000)
-  #   assert x == 4.8
-  # end
-
-  test "escape velocity of earth is correct" do
-    result = Physics.Rocketry.escape_velocity(:earth)
-    assert(result) == 11.2
+  test "Orbital acceleration for Jupiter" do
+    result = Physics.Rocketry.orbital_acceleration(Planet.select()[:jupiter], 100)
+    assert result == 24.659005330334
   end
 
-  test "escape velocity of mars is correct" do
-    result = Physics.Rocketry.escape_velocity(:mars)
-    assert(result) == 5.1
-  end
-
-  test "escape velocity of the moon is correct" do
-    result = Physics.Rocketry.escape_velocity(:moon)
-    assert(result) == 2375.9
-  end
-
-  test "escape velocity of planet X is correct" do
-    result =
-      %{mass: 4.0e22, radius: 6.21e6}
-      |> Physics.Rocketry.escape_velocity()
-
-    assert(result) == 1.0
+  test "Orbital term at 100km for Saturn at 6000km" do
+    result = Physics.Rocketry.orbital_term(Planet.select()[:saturn], 6000)
+    assert result == 4.8
   end
 end

@@ -35,6 +35,6 @@ defmodule SolarTest do
   end
 
   test "Sums up the total flare power", %{data: flares} do
-    assert Solar.total_flare_power(flares) == 216911.7
+    assert Solar.total_flare_power(flares) == 216_911.7
   end
 end

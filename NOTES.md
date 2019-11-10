@@ -78,7 +78,7 @@ Structs are named maps
 ```
 mars = %Planet{
   name: :mars,
-  type: :rocky
+  type: :rocky,
   ev: 5.0
 }
 ```
