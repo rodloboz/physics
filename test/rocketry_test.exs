@@ -2,23 +2,24 @@ defmodule RocketryTest do
   use ExUnit.Case
 
   test "Orbital acceleration defaults to Earth" do
-    expected = Physics.Rocketry.orbital_acceleration(100)
-    assert expected == 9.515619587729839
+    result = Physics.Rocketry.orbital_acceleration(100)
+    assert result == 9.515619587729839
   end
 
   test "Orbital speed for earth at 100km" do
-    expected = Physics.Rocketry.orbital_speed(100)
-    assert expected == 7846.404191259335
+    result = Physics.Rocketry.orbital_speed(100)
+    assert result == 7846.404191259335
   end
 
   test "Orbital acceleration for earth at 100km" do
-    expected = Physics.Rocketry.orbital_acceleration(100)
-    assert expected == 9.515619587729839
+    result = Physics.Rocketry.orbital_acceleration(100)
+    assert result == 9.515619587729839
   end
 
   test "Orbital term for 100km above earth" do
-    expected = Physics.Rocketry.orbital_term(100)
-    assert (expected > 4) && (expected < 5) #crap fix this!
+    result = Physics.Rocketry.orbital_term(100)
+    # crap fix this!
+    assert result > 4 && result < 5
   end
 
   # test "Orbital acceleration for Jupiter" do
@@ -32,25 +33,25 @@ defmodule RocketryTest do
   # end
 
   test "escape velocity of earth is correct" do
-    expected = Physics.Rocketry.escape_velocity(:earth)
-    assert(expected) == 11.2
+    result = Physics.Rocketry.escape_velocity(:earth)
+    assert(result) == 11.2
   end
 
   test "escape velocity of mars is correct" do
-    expected = Physics.Rocketry.escape_velocity(:mars)
-    assert(expected) == 5.1
+    result = Physics.Rocketry.escape_velocity(:mars)
+    assert(result) == 5.1
   end
 
   test "escape velocity of the moon is correct" do
-    expected = Physics.Rocketry.escape_velocity(:moon)
-    assert(expected) == 2375.9
+    result = Physics.Rocketry.escape_velocity(:moon)
+    assert(result) == 2375.9
   end
 
   test "escape velocity of planet X is correct" do
-    expected =
+    result =
       %{mass: 4.0e22, radius: 6.21e6}
       |> Physics.Rocketry.escape_velocity()
 
-    assert(expected) == 1.0
+    assert(result) == 1.0
   end
 end
