@@ -1,20 +1,10 @@
 defmodule Physics.Rocketry do
   alias Physics.Converter, as: Converter
+  alias Physics.Laws, as: Laws
 
-  def escape_velocity(:earth) do
-    %{mass: 5.972e24, radius: 6.371e6}
-    |> escape_velocity
-  end
-
-  def escape_velocity(:mars) do
-    %{mass: 6.39e23, radius: 3.4e6}
-    |> escape_velocity
-  end
-
-  def escape_velocity(:moon) do
-    %{mass: 7.35e22, radius: 1.738e6}
-    |> escape_velocity
-  end
+  def escape_velocity(:earth), do: Planets.earth |> escape_velocity
+  def escape_velocity(:mars), do: Planets.mars |> escape_velocity
+  def escape_velocity(:moon), do: Planets.moon |> escape_velocity
 
   def escape_velocity(planet) when is_map(planet) do
     planet
@@ -24,9 +14,7 @@ defmodule Physics.Rocketry do
   end
 
   defp calculate_escape(%{mass: mass, radius: radius}) do
-    newtons_constant = 6.67e-11
-
-    (2 * newtons_constant * mass / radius)
-    |> :math.sqrt()
+    (2 * Laws.newtons_gravitational_constant * mass / radius)
+    |> Calcs.square_root
   end
 end
