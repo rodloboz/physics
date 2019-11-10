@@ -73,7 +73,7 @@ If you use a string as key, you have to use the literal string: `map["ev"] # 5.0
 
 ## Structs
 
-Structs are names maps
+Structs are named maps
 
 ```
 mars = %Planet{
@@ -183,7 +183,9 @@ tail
 
 ## Counting
 
-Elixir doesn't have loops, but we can use pattern matching and function arity to achieve similar results:
+Elixir doesn't have loops, but we can use pattern matching and function arity to achieve similar results.
+
+This is called head/tail recursion:
 
 ```
 planets = [
